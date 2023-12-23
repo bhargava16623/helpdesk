@@ -152,3 +152,7 @@ tr.tb:nth-child(odd) {
   text-align: center;
   margin-right: -155%;
 }
+
+.btn:active {
+  transform: translateY(4px);
+}

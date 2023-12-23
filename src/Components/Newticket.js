@@ -1,8 +1,11 @@
 import React,{useState} from 'react';
 import { addTicket } from "../Utils/ticketSlice";
 import { useDispatch,useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 export default function Newticket() {
+
+  const navigate = useNavigate();
 
    const [ticket, setTicket] = useState({
     ticketnum: "",
@@ -31,6 +34,7 @@ export default function Newticket() {
      e.preventDefault();
      dispatch(addTicket(ticket));
      console.log(ticket);
+     navigate("/myticket");
   };
   const cartItems=useSelector(store=>store.tickets.items);
   console.log(cartItems);
@@ -44,21 +48,21 @@ export default function Newticket() {
         <tr>
           <td>
              <label className='labl'>Ticket No.</label>
-             <input type="text" name="ticketnum" value={ticket.ticketnum} onChange={handleInputs}/>
+             <input type="text" name="ticketnum" value={ticket.ticketnum} onChange={handleInputs} required/>
           </td>
           <td>
              <label className='labl'>Date</label>
-             <input type="text" name="date" value={ticket.date} onChange={handleInputs}/>
+             <input type="text" name="date" value={ticket.date} onChange={handleInputs} required/>
              </td>
         </tr>
         <tr>
           <td>
            <label className='labl'>Name</label>
-           <input type="text" name="ticketname" value={ticket.ticketname} onChange={handleInputs}/>
+           <input type="text" name="ticketname" value={ticket.ticketname} onChange={handleInputs} required/>
           </td>
           <td>
            <label className='labl'>Department</label>
-           <input type="text"  name="department" value={ticket.department} onChange={handleInputs}/>
+           <input type="text"  name="department" value={ticket.department} onChange={handleInputs} required/>
           </td>
         </tr>
         <tr>
@@ -68,7 +72,7 @@ export default function Newticket() {
         </tr>
         <tr>
         <td colSpan="2" >
-           <input type="text" className='iptwth' name="subject" value={ticket.subject} onChange={handleInputs}/>
+           <input type="text" className='iptwth' name="subject" value={ticket.subject} onChange={handleInputs} required/>
           </td>
         </tr>
         <tr>
@@ -81,10 +85,10 @@ export default function Newticket() {
         </tr>
         <tr>
           <td>
-           <input type="text" name="category" value={ticket.category} onChange={handleInputs}/>
+           <input type="text" name="category" value={ticket.category} onChange={handleInputs} required/>
           </td>
           <td rowspan="4" >
-           <textarea name="description" rows="10" cols="42" value={ticket.description} onChange={handleInputs}/>
+           <textarea name="description" rows="10" cols="42" value={ticket.description} onChange={handleInputs} required/>
           </td>
         </tr>
         <tr>
@@ -94,7 +98,7 @@ export default function Newticket() {
         </tr>
         <tr>
           <td>
-           <input type="text" name="type" value={ticket.type} onChange={handleInputs}/>
+           <input type="text" name="type" value={ticket.type} onChange={handleInputs} required/>
            </td>
         </tr>
         <tr>
@@ -104,7 +108,7 @@ export default function Newticket() {
         </tr>
         <tr>
         <td>
-           <input type="text" name="priority" value={ticket.priority} onChange={handleInputs}/>
+           <input type="text" name="priority" value={ticket.priority} onChange={handleInputs} required/>
            </td>
         </tr>
         
